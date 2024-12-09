@@ -20,3 +20,111 @@ progress::-webkit-progress-value {
     @apply !capitalize;
   }
 }
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@layer utilities {
+    .animate-twinkle {
+        animation: twinkle 2s infinite;
+    }
+}
+
+@keyframes float-in {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-float-in {
+    animation: float-in 0.3s ease-out forwards;
+}
+
+.snowfall-container {
+    background: transparent;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    animation: snow 20s linear infinite;
+}
+
+@keyframes snow {
+    0% {
+        background-position: 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+    }
+    100% {
+        background-position: 500px 1000px, 400px 400px, 300px 300px, 200px 200px, 100px 100px, 0px 0px;
+    }
+}
+
+.snow-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.snow {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    filter: drop-shadow(0 0 2px rgba(255,255,255,0.5));
+    animation: fall 10s linear infinite;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100vh) translateX(-50%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) translateX(50%);
+        opacity: 0.3;
+    }
+}
+
+/* Create multiple snow variants with different animations */
+.snow:nth-child(2n) {
+    width: 6px;
+    height: 6px;
+    animation-duration: 7s;
+    animation-delay: -2s;
+}
+
+.snow:nth-child(3n) {
+    width: 4px;
+    height: 4px;
+    animation-duration: 13s;
+    animation-delay: -5s;
+}
+
+.snow:nth-child(4n) {
+    width: 7px;
+    height: 7px;
+    animation-duration: 9s;
+    animation-delay: -7s;
+}
+
+/* Add a glow effect to the text */
+.christmas-glow {
+    text-shadow: 0 0 10px rgba(255,255,255,0.5),
+                 0 0 20px rgba(255,255,255,0.3),
+                 0 0 30px rgba(255,255,255,0.2);
+}

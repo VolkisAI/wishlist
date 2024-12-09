@@ -17,6 +17,8 @@ module.exports = {
         wiggle: "wiggle 1.5s ease-in-out infinite",
         popup: "popup 0.25s ease-in-out",
         shimmer: "shimmer 3s ease-out infinite alternate",
+        twinkle: "twinkle 2s ease-in-out infinite",
+        'fade-in-up': 'fadeInUp 0.5s ease-out',
       },
       keyframes: {
         opacity: {
@@ -53,6 +55,14 @@ module.exports = {
           "0%": { backgroundPosition: "0 50%" },
           "50%": { backgroundPosition: "100% 50%" },
           "100%": { backgroundPosition: "0% 50%" },
+        },
+        twinkle: {
+          "0%, 100%": { opacity: 0.2 },
+          "50%": { opacity: 1 },
+        },
+        fadeInUp: {
+          '0%': { transform: 'translateY(10px)', opacity: 0 },
+          '100%': { transform: 'translateY(0)', opacity: 1 },
         },
       },
     },
