@@ -99,7 +99,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
 
                         {/* Children Names Section */}
                         <div className="space-y-4">
-                            <label className="block text-gray-900 font-extrabold">Children's Names</label>
+                            <label className="block text-gray-900 font-extrabold">Children&apos;s Names</label>
                             {formData.children.map((child, index) => (
                                 <div key={index} className="flex items-center gap-2">
                                     <input
@@ -107,7 +107,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                                         value={child.name}
                                         onChange={(e) => updateChildName(index, e.target.value)}
                                         className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
-                                        placeholder={`Child ${index + 1}'s name`}
+                                        placeholder={`Child ${index + 1}&apos;s name`}
                                     />
                                     {formData.children.length > 1 && (
                                         <button

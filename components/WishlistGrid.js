@@ -177,7 +177,7 @@ export default function WishlistGrid() {
                                     <div className="text-white text-sm font-bold">SANTA</div>
                                 </div>
                                 
-                                <h2 className="card-title font-extrabold text-2xl text-gray-900">{wishlist.family_name}'s Wishlist</h2>
+                                <h2 className="card-title font-extrabold text-2xl text-gray-900">{wishlist.family_name}&apos;s Wishlist</h2>
                                 <div className="space-y-2 mt-4">
                                     <p className="text-gray-600">Created: {new Date(wishlist.created_at).toLocaleDateString()}</p>
                                     <p className="text-gray-600">Responses: {wishlist.responses_count}</p>

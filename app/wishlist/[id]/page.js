@@ -7,7 +7,6 @@
 
 import { createClient } from "@/libs/supabase/server";
 import { notFound } from "next/navigation";
-import ReplyToSantaButton from "@/components/ReplyToSantaButton";
 import WishlistReplyForm from '@/components/wishlist/WishlistReplyForm';
 import LetterContent from '@/components/wishlist/LetterContent';
 
@@ -107,10 +106,10 @@ export default async function WishlistPage({ params }) {
                                 width: '100%',
                                 maxWidth: '750px'
                             }}>
-                            <LetterContent 
-                                children={formatChildrenNames(wishlistData.children)}
-                                note={wishlistData.note}
-                            />
+                            <LetterContent>
+                                {formatChildrenNames(wishlistData.children)}
+                                {wishlistData.note}
+                            </LetterContent>
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 /**
  * Admin Dashboard Page
  * 
- * Main administrative interface for parents to manage their children's wishlists
+ * Main administrative interface for parents to manage their children&apos;s wishlists
  * and view submissions. Protected by authentication in layout.js.
  */
 
@@ -17,8 +17,8 @@ export default async function Dashboard() {
         {/* Header Section */}
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-3xl md:text-4xl font-extrabold text-gray-100">Santa's Admin Dashboard</h1>
-            <p className="text-gray-400 mt-2">Manage your children's wishlists and view their messages to Santa</p>
+            <h1 className="text-3xl md:text-4xl font-extrabold text-gray-100">Santa&apos;s Admin Dashboard</h1>
+            <p className="text-gray-400 mt-2">Manage your children&apos;s wishlists and view their messages to Santa</p>
           </div>
           <ButtonAccount />
         </div>

@@ -17,7 +17,7 @@ export default function LetterContent({ children, note }) {
         <div className="space-y-6 text-left">
             {/* Santa's Address */}
             <div className="text-center mb-8">
-                <p className="text-gray-900 text-lg font-medium leading-relaxed">Santa's Workshop & Post Office</p>
+                <p className="text-gray-900 text-lg font-medium leading-relaxed">Santa&apos;s Workshop &amp; Post Office</p>
                 <p className="text-gray-900 text-lg font-medium leading-relaxed">1 Candy Cane Lane</p>
                 <p className="text-gray-900 text-lg font-medium leading-relaxed">North Pole, Arctic Circle</p>
             </div>

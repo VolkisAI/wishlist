@@ -116,7 +116,7 @@ export default function WishlistTable() {
                     <option value="all">All Wishlists</option>
                     {userWishlists.map(wishlist => (
                         <option key={wishlist.id} value={wishlist.id}>
-                            {wishlist.family_name}'s Wishlist
+                            {wishlist.family_name}&apos;s Wishlist
                         </option>
                     ))}
                 </select>
@@ -127,7 +127,7 @@ export default function WishlistTable() {
                 <table className="table w-full">
                     <thead>
                         <tr className="bg-gray-900/50">
-                            <th className="text-gray-300">Child's Name</th>
+                            <th className="text-gray-300">Child&apos;s Name</th>
                             <th className="text-gray-300">Wishlist</th>
                             <th className="text-gray-300">Message Preview</th>
                             <th className="text-gray-300">Submitted</th>

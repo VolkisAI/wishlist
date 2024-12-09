@@ -29,12 +29,12 @@ export default function WishlistReplyForm({ wishlistId }) {
         e.preventDefault();
         
         if (!formData.childName?.trim()) {
-            setValidationMessage("Ho ho ho! How will Santa know who to send the presents to if you don't tell him your name?");
+            setValidationMessage("Ho ho ho! How will Santa know who to send the presents to if you don&apos;t tell him your name?");
             return;
         }
         
         if (!formData.message?.trim()) {
-            setValidationMessage("Don't forget to write your message to Santa! He loves hearing from you!");
+            setValidationMessage("Don&apos;t forget to write your message to Santa! He loves hearing from you!");
             return;
         }
         
@@ -178,7 +178,7 @@ export default function WishlistReplyForm({ wishlistId }) {
                             onClick={() => setValidationMessage('')}
                             className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
                         >
-                            Ok, I'll Fix It
+                            Ok, I&apos;ll Fix It
                         </button>
                     </div>
                 </div>
@@ -197,7 +197,7 @@ export default function WishlistReplyForm({ wishlistId }) {
                             onClick={() => setShowWordLimitAlert(false)}
                             className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors"
                         >
-                            Ok, I'll Make It Shorter
+                            Ok, I&apos;ll Make It Shorter
                         </button>
                     </div>
                 </div>
@@ -242,7 +242,7 @@ export default function WishlistReplyForm({ wishlistId }) {
                     {/* Letter Header - Simplified without images */}
                     <div className="text-right mb-8 text-gray-700 border-b border-gray-200 pb-4">
                         <h2 className="text-xl font-medium mb-2">North Pole Post</h2>
-                        <p className="text-lg font-medium">Santa's Workshop & Post Office</p>
+                        <p className="text-lg font-medium">Santa&apos;s Workshop &amp; Post Office</p>
                         <p className="text-lg font-medium">1 Candy Cane Lane</p>
                         <p className="text-lg font-medium">North Pole, Arctic Circle</p>
                     </div>

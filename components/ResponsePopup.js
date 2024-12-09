@@ -41,7 +41,7 @@ export default function ResponsePopup({ response, onClose }) {
                             <div className="text-right space-y-1">
                                 <div className="text-2xl font-medium text-gray-900 mb-2">Santa Claus</div>
                                 <div className="text-gray-900 font-medium">
-                                    Santa's Workshop & Post Office
+                                    Santa&apos;s Workshop &amp; Post Office
                                 </div>
                                 <div className="text-gray-900 font-medium">
                                     1 Candy Cane Lane
