@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ButtonSignin from "@/components/ButtonSignin";
 import ChristmasButton from "@/components/ChristmasButton";
 import DottedBackground from "@/components/DottedBackground";
@@ -101,7 +100,7 @@ export default function Page() {
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Create your magical Christmas wishlist, write a special letter to Santa, 
               and receive a personal reply from the North Pole! Parents can easily keep 
-              track of all their children's Christmas dreams in one magical place.
+              track of all their children&apos;s Christmas dreams in one magical place.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -191,7 +190,7 @@ export default function Page() {
                   {
                     step: 3,
                     title: "Track Christmas Wishes",
-                    description: "View their Christmas wish lists and manage all your children's Christmas dreams in one place",
+                    description: "View their Christmas wish lists and manage all their children&apos;s Christmas dreams in one place",
                     icon: "🎁"
                   }
                 ].map((step, i) => (

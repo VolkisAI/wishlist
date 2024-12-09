@@ -20,15 +20,21 @@ export default function Login() {
       const redirectURL = window.location.origin + "/api/auth/callback";
 
       if (type === "oauth") {
-        await supabase.auth.signInWithOAuth({
+        const { error } = await supabase.auth.signInWithOAuth({
           provider,
           options: {
             redirectTo: redirectURL,
           },
         });
+
+        if (error) {
+          toast.error("Failed to sign in. Please try again.");
+          console.error("Sign in error:", error);
+        }
       }
     } catch (error) {
-      console.log(error);
+      console.error("Sign in error:", error);
+      toast.error("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
