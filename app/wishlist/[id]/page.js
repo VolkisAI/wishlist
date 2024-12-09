@@ -106,10 +106,10 @@ export default async function WishlistPage({ params }) {
                                 width: '100%',
                                 maxWidth: '750px'
                             }}>
-                            <LetterContent>
-                                {formatChildrenNames(wishlistData.children)}
-                                {wishlistData.note}
-                            </LetterContent>
+                            <LetterContent 
+                                name={formatChildrenNames(wishlistData.children)}
+                                note={wishlistData.note}
+                            />
                         </div>
                     </div>
                 </div>

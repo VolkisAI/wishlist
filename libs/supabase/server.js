@@ -1,6 +1,13 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 
+// Helper function to get the site URL
+function getSiteUrl() {
+  return process.env.NODE_ENV === 'production'
+    ? 'https://santaswishlist.app'
+    : 'http://localhost:3000';
+}
+
 export function createClient() {
   const cookieStore = cookies();
 
@@ -14,22 +21,25 @@ export function createClient() {
         },
         set(name, value, options) {
           try {
-            cookieStore.set(name, value, options);
-          } catch {
-            // The `set` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
+            cookieStore.set({ name, value, ...options });
+          } catch (error) {
+            // Handle cookie error
           }
         },
         remove(name, options) {
           try {
-            cookieStore.set(name, '', options);
-          } catch {
-            // The `remove` method was called from a Server Component.
-            // This can be ignored if you have middleware refreshing
-            // user sessions.
+            cookieStore.set({ name, value: '', ...options });
+          } catch (error) {
+            // Handle cookie error
           }
         },
+      },
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true,
+        redirectTo: `${getSiteUrl()}/auth/callback`,
       },
     }
   );

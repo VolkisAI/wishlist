@@ -128,3 +128,80 @@ progress::-webkit-progress-value {
                  0 0 20px rgba(255,255,255,0.3),
                  0 0 30px rgba(255,255,255,0.2);
 }
+
+/* Add these styles to your globals.css */
+.snow-container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.snow {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite;
+  transform: translateY(-100vh);
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-100vh) translateX(0);
+  }
+  25% {
+    transform: translateY(-75vh) translateX(25px);
+  }
+  50% {
+    transform: translateY(-50vh) translateX(-25px);
+  }
+  75% {
+    transform: translateY(-25vh) translateX(25px);
+  }
+  100% {
+    transform: translateY(100vh) translateX(-25px);
+  }
+}
+
+/* Vary snow sizes and speeds */
+.snow:nth-child(2n) {
+  width: 7px;
+  height: 7px;
+  animation-duration: 7s;
+}
+
+.snow:nth-child(3n) {
+  width: 12px;
+  height: 12px;
+  animation-duration: 10s;
+}
+
+.snow:nth-child(4n) {
+  width: 5px;
+  height: 5px;
+  animation-duration: 13s;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 20;
+  }
+}
+
+.animate-dash {
+  animation: dash 20s linear infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
