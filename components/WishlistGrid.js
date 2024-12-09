@@ -47,7 +47,7 @@ export default function WishlistGrid() {
         } finally {
             setLoading(false);
         }
-    };
+    }
 
     const handleCreateWishlist = async (formData) => {
         try {
