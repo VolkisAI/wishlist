@@ -13,7 +13,7 @@ import { createClient } from '@/libs/supabase/server';
  */
 export async function POST(req) {
     try {
-        const formData = await req.json();
+        const data = await req.json();
         const supabase = createClient();
         
         // Verify user authentication
@@ -34,9 +34,9 @@ export async function POST(req) {
             .from('wishlists')
             .insert({
                 id: wishlistId,
-                family_name: formData.childName,
-                children: formData.children || [],
-                note: formData.note,
+                family_name: data.childName,
+                children: data.children || [],
+                note: data.note,
                 created_at: new Date().toISOString(),
                 responses_count: 0,
                 user_id: user.id,
@@ -65,8 +65,8 @@ export async function POST(req) {
 
 /**
  * @endpoint GET /api/wishlists
- * @desc Get all wishlists for authenticated user from Supabase database
- * @access Private - Requires authentication
+ * @desc Get all wishlists for the authenticated user
+ * @access Private
  */
 export async function GET() {
     try {
@@ -82,10 +82,13 @@ export async function GET() {
             }, { status: 401 });
         }
 
-        // Get all wishlists for the current user
+        // Get wishlists for the current user
         const { data: wishlists, error: wishlistError } = await supabase
             .from('wishlists')
-            .select('*')
+            .select(`
+                *,
+                responses:responses(count)
+            `)
             .eq('user_id', user.id)
             .order('created_at', { ascending: false });
 
@@ -97,9 +100,15 @@ export async function GET() {
             }, { status: 500 });
         }
 
+        // Format the response count
+        const formattedWishlists = wishlists.map(wishlist => ({
+            ...wishlist,
+            responses_count: wishlist.responses?.[0]?.count || 0
+        }));
+
         return NextResponse.json({
             success: true,
-            data: wishlists || []
+            data: formattedWishlists
         });
 
     } catch (error) {
