@@ -19,9 +19,6 @@ export default function WishlistGrid() {
     const [wishlists, setWishlists] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [selectedResponse, setSelectedResponse] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [selectedWishlist, setSelectedWishlist] = useState('all');
     const [shareUrl, setShareUrl] = useState('');
     const [isSharePopupOpen, setIsSharePopupOpen] = useState(false);
 

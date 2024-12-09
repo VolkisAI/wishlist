@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import WishlistForm from './WishlistForm';
 import WishlistReplyForm from './WishlistReplyForm';
 import ReplyToSantaButton from '../ReplyToSantaButton';
 
