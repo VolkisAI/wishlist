@@ -39,6 +39,13 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
             return;
         }
 
+        // NEW VALIDATION: Limit to 60 words
+        const wordCount = note.trim().split(/\s+/).length;
+        if (wordCount > 60) {
+            setError('Special message must be 60 words or fewer');
+            return;
+        }
+
         // Submit the form
         onSubmit({
             family_name: familyName.trim(),
@@ -66,7 +73,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-            <div className="relative max-w-md w-full animate-float-in">
+            <div className="relative max-w-3xl w-full animate-float-in">
                 {/* Snow Cap Overlay */}
                 <div 
                     className="absolute -top-[6px] left-0 w-full h-7 z-10"
@@ -104,7 +111,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                                 type="text"
                                 value={familyName}
                                 onChange={(e) => setFamilyName(e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
+                                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-normal"
                                 placeholder="e.g., The Smith Family"
                                 required
                             />
@@ -121,7 +128,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                                         type="text"
                                         value={child}
                                         onChange={(e) => updateChild(index, e.target.value)}
-                                        className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
+                                        className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-normal"
                                         placeholder="Child&apos;s name"
                                         required={index === 0}
                                     />
@@ -172,18 +179,42 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                                     This message will appear in the magical letter from Santa that your children will read. Make it personal and special!
                                 </Tooltip>
                             </div>
-                            <textarea
-                                value={note}
-                                onChange={(e) => setNote(e.target.value)}
-                                className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
-                                rows="4"
-                                placeholder="Write a magical message from Santa..."
-                                required
-                            />
+
+                            {/* Letter Format */}
+                            <div className="text-gray-700 font-extrabold mb-2">
+                                Dear {children.filter(child => child.trim() !== '').join(', ')},
+                            </div>
+
+                            <div className="relative mb-2">
+                                <textarea
+                                    value={note}
+                                    onChange={(e) => {
+                                        const words = e.target.value.trim().split(/\s+/);
+                                        if (words.length <= 60) {
+                                            setNote(e.target.value);
+                                            setError('');
+                                        } else {
+                                            setError('You have exceeded the 60-word limit.');
+                                        }
+                                    }}
+                                    className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-normal"
+                                    rows="4"
+                                    placeholder="Write a magical message from Santa without including Dear or From Santa..."
+                                    required
+                                />
+                                <div className="absolute right-2 bottom-2 text-sm text-gray-500">
+                                    {60 - (note.trim().split(/\s+/).length || 0)} words remaining
+                                </div>
+                            </div>
+
+                            <div className="text-gray-700 font-extrabold">
+                                With lots of love,<br/>
+                                Santa Claus 🎅
+                            </div>
                         </div>
 
                         {error && (
-                            <div className="text-red-500 text-sm font-medium">{error}</div>
+                            <div className="text-red-500 text-sm font-medium mt-6">{error}</div>
                         )}
 
                         <div className="flex justify-end space-x-3 pt-4 border-t">

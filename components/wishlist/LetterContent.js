@@ -42,8 +42,8 @@ export default function LetterContent({ name, note }) {
                 
                 {/* Signature */}
                 <div className="pt-6 space-y-2">
-                    <p className="text-gray-900 text-lg font-medium leading-relaxed">From,</p>
-                    <p className="text-gray-900 text-xl font-medium leading-relaxed">Santa 🎅</p>
+                    <p className="text-gray-900 text-lg font-medium leading-relaxed">With lots of love,</p>
+                    <p className="text-gray-900 text-xl font-medium leading-relaxed">Santa Claus 🎅</p>
                 </div>
                 
                 <ReplyToSantaButton onClick={handleReplyClick} />
