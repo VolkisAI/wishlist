@@ -128,17 +128,22 @@ export default function WishlistGrid() {
 
     return (
         <div className="space-y-6">
-            {/* Create New Wishlist Button - Always visible */}
-            <div className="flex justify-end">
-                <ChristmasButton 
-                    variant="primary" 
-                    onClick={() => setIsPopupOpen(true)}
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                    </svg>
-                    Create New Wishlist
-                </ChristmasButton>
+            {/* Header Section with Explanation */}
+            <div className="space-y-4">
+                <p className="text-gray-400 text-lg text-center">
+                    Create and personalize magical letters from Santa to send to your children. Each letter can be customized with your children&apos;s names and a special message from Santa himself!
+                </p>
+                <div className="flex justify-end">
+                    <ChristmasButton 
+                        variant="primary" 
+                        onClick={() => setIsPopupOpen(true)}
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        Create Letter from Santa
+                    </ChristmasButton>
+                </div>
             </div>
 
             {/* Create Wishlist Popup */}
@@ -160,7 +165,7 @@ export default function WishlistGrid() {
                     <div className="max-w-xl mx-auto text-left space-y-4">
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
-                            <p className="text-gray-400">Click the &quot;Create New Wishlist&quot; button above to create a wishlist group for your family</p>
+                            <p className="text-gray-400">Click the &quot;Create Letter from Santa&quot; button above to create a wishlist group for your family</p>
                         </div>
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
@@ -208,7 +213,7 @@ export default function WishlistGrid() {
                                         <div className="text-white text-sm font-bold">SANTA</div>
                                     </div>
 
-                                    <h2 className="card-title font-extrabold text-2xl text-gray-900">{wishlist.family_name}&apos;s Wishlist</h2>
+                                    <h2 className="card-title font-extrabold text-2xl text-gray-900">{wishlist.family_name}&apos;s Letter from Santa</h2>
                                     <div className="space-y-2 mt-4">
                                         <p className="text-gray-600">Created: {new Date(wishlist.created_at).toLocaleDateString()}</p>
                                         <p className="text-gray-600">Responses: {wishlist.responses_count}</p>

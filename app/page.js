@@ -93,19 +93,19 @@ export default function Page() {
           <div className="relative max-w-7xl mx-auto text-center space-y-6 z-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm text-white">
               <span>🎄</span>
-              <span>Help Santa know exactly what to bring this Christmas</span>
+              <span>Create magical Christmas memories with personalized letters from Santa</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold text-white max-w-4xl mx-auto leading-tight">
-              Write to Santa and Make Your
+              Send Your Children Magical
               <br />
-              Christmas Wishes Come True!
+              Letters from Santa!
             </h1>
 
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              Create your magical Christmas wishlist, write a special letter to Santa, 
-              and receive a personal reply from the North Pole! Parents can easily keep 
-              track of all their children&apos;s Christmas dreams in one magical place.
+              Create personalized letters from Santa for your children, and when they write back, 
+              easily keep track of all their Christmas wishes in one magical place. Give your family 
+              the gift of Christmas magic!
             </p>
 
             <h2 className="text-2xl font-bold text-white mt-8 mb-4">Countdown To Christmas</h2>

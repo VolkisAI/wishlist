@@ -25,14 +25,14 @@ export default function AdminTabs() {
                     onClick={() => setActiveTab('wishlists')}
                     className="min-w-[150px]"
                 >
-                    My Wishlists
+                    Santa&apos;s Letters
                 </ChristmasButton>
                 <ChristmasButton
                     variant={activeTab === 'submissions' ? 'primary' : 'default'}
                     onClick={() => setActiveTab('submissions')}
                     className="min-w-[150px]"
                 >
-                    Submissions
+                    Your Kids Wishlists
                 </ChristmasButton>
             </div>
 

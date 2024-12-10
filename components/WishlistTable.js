@@ -99,6 +99,11 @@ export default function WishlistTable() {
 
     return (
         <div className="space-y-4">
+            {/* Explanatory Text */}
+            <p className="text-gray-400 text-lg text-center mb-6">
+                View and manage all the Christmas wishlists your children have written to Santa. Search through their messages and keep track of all their special Christmas wishes.
+            </p>
+            
             {/* Search and Filter Section */}
             <div className="flex gap-4 mb-6">
                 <input 

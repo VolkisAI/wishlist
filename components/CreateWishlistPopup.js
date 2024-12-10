@@ -100,7 +100,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                         background: 'repeating-linear-gradient(45deg, #f8f8f8, #f8f8f8 10px, #ffffff 10px, #ffffff 20px)',
                     }}>
                     <form onSubmit={handleSubmit} className="p-6 space-y-4">
-                        <h2 className="text-2xl font-extrabold text-gray-900 mb-4">Create New Wishlist</h2>
+                        <h2 className="text-2xl font-extrabold text-gray-900 mb-4">Create Letter from Santa</h2>
 
                         {/* Family Name */}
                         <div>
@@ -225,7 +225,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                                 Cancel
                             </ChristmasButton>
                             <ChristmasButton type="submit" className="font-extrabold">
-                                Create Wishlist
+                                Create Letter from Santa
                             </ChristmasButton>
                         </div>
                     </form>
