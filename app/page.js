@@ -93,7 +93,7 @@ export default function Page() {
           <div className="relative max-w-7xl mx-auto text-center space-y-6 z-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm text-white">
               <span>🎄</span>
-              <span>Create magical Christmas memories with personalized letters from Santa</span>
+              <span>Send magical letters from Santa and discover your children&apos;s Christmas wishes</span>
             </div>
             
             <h1 className="text-4xl md:text-6xl font-bold text-white max-w-4xl mx-auto leading-tight">
