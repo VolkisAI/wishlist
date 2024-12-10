@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import ButtonSignin from "@/components/ButtonSignin";
 import ChristmasButton from "@/components/ChristmasButton";
 import Image from "next/image";
@@ -11,24 +11,33 @@ import Link from "next/link";
 import MobileWarningPopup from '@/components/MobileWarningPopup';
 
 export default function Page() {
-  useEffect(() => {
-    // Log memory usage every 30 seconds
-    const memoryCheck = setInterval(() => {
-      if (performance && performance.memory) {
-        console.log('Memory Usage:', {
-          usedJSHeapSize: Math.round(performance.memory.usedJSHeapSize / 1048576) + ' MB',
-          totalJSHeapSize: Math.round(performance.memory.totalJSHeapSize / 1048576) + ' MB',
-          jsHeapSizeLimit: Math.round(performance.memory.jsHeapSizeLimit / 1048576) + ' MB'
-        });
-      }
-    }, 30000);
+  const [isMobileWarningVisible, setIsMobileWarningVisible] = useState(true);
+  const [mobileCheckComplete, setMobileCheckComplete] = useState(false);
 
-    return () => clearInterval(memoryCheck);
+  // Check mobile warning first
+  useEffect(() => {
+    const hasSeenMobileWarning = localStorage.getItem('hasSeenMobileWarning');
+    const isMobile = window.innerWidth < 800;
+    const shouldShowMobile = isMobile && !hasSeenMobileWarning;
+    setIsMobileWarningVisible(shouldShowMobile);
+    setMobileCheckComplete(true);
   }, []);
+
+  // Handle mobile warning visibility
+  const handleMobileWarningVisibility = (isVisible) => {
+    setIsMobileWarningVisible(isVisible);
+  };
+
+  // Don't render anything until mobile check is complete
+  if (!mobileCheckComplete) return null;
 
   return (
     <>
-      <MobileWarningPopup />
+      {/* Show mobile warning with highest priority */}
+      {isMobileWarningVisible && (
+        <MobileWarningPopup onVisibilityChange={handleMobileWarningVisibility} />
+      )}
+
       <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/50">
         <div className="p-4 flex justify-between items-center max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
@@ -153,7 +162,7 @@ export default function Page() {
 
         {/* Features Section */}
         <section className="relative px-4 py-24 bg-[#121212]">
-          <div className="max-w-7xl mx-auto space-y-16">
+          <div className="max-w-7xl mx-auto space-y-12">
             <div className="text-center space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
                 Making Christmas Dreams Come True
@@ -163,7 +172,33 @@ export default function Page() {
               </p>
             </div>
 
-            <div className="relative">
+            {/* Demo Video */}
+            <div className="max-w-2xl mx-auto">
+              <div className="aspect-video rounded-xl overflow-hidden bg-gray-900 shadow-2xl">
+                <video
+                  className="w-full h-full object-cover"
+                  controls
+                  playsInline
+                  preload="metadata"
+                  crossOrigin="anonymous"
+                  onError={(e) => {
+                    console.error('Video loading error:', e);
+                    e.target.style.display = 'none';
+                  }}
+                >
+                  <source 
+                    src="/api/video" 
+                    type="video/mp4"
+                  />
+                  <div className="p-4 text-center text-white">
+                    Unable to load video. Please refresh or try again later.
+                  </div>
+                </video>
+              </div>
+            </div>
+
+            {/* Feature Squares Section */}
+            <div className="relative pt-16">
               {/* Curved Dotted Lines */}
               <div className="absolute top-1/3 left-[20%] right-[20%] h-24 hidden md:block">
                 <svg className="w-full h-full" viewBox="0 0 400 100">

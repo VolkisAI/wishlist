@@ -10,46 +10,27 @@
 import { useState, useEffect, useCallback } from 'react';
 import ChristmasButton from './ChristmasButton';
 
-export default function MobileWarningPopup() {
-    const [isOpen, setIsOpen] = useState(false);
+export default function MobileWarningPopup({ onVisibilityChange }) {
     const [mounted, setMounted] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
     
     const handleDismiss = useCallback(() => {
+        // Set the localStorage flag
         localStorage.setItem('hasSeenMobileWarning', 'true');
-        setIsOpen(false);
-    }, []);
+        // Hide the popup locally
+        setIsVisible(false);
+        // Notify parent component
+        if (onVisibilityChange) {
+            onVisibilityChange(false);
+        }
+    }, [onVisibilityChange]);
 
     useEffect(() => {
         setMounted(true);
-        
-        // Debounce the resize handler
-        let resizeTimer;
-        const checkWidth = () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                if (typeof window !== 'undefined') {
-                    const hasSeenWarning = localStorage.getItem('hasSeenMobileWarning');
-                    if (window.innerWidth < 500 && !hasSeenWarning) {
-                        setIsOpen(true);
-                    }
-                }
-            }, 250); // Debounce for 250ms
-        };
-        
-        checkWidth();
-        
-        // Use passive event listener for better performance
-        window.addEventListener('resize', checkWidth, { passive: true });
-        
-        return () => {
-            window.removeEventListener('resize', checkWidth);
-            clearTimeout(resizeTimer);
-        };
     }, []);
 
-    // Don't render anything on server side
-    if (!mounted) return null;
-    if (!isOpen) return null;
+    // Don't render anything on server side or if dismissed
+    if (!mounted || !isVisible) return null;
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-[9999] flex items-center justify-center p-4">
