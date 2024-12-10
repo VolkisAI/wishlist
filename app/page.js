@@ -119,7 +119,7 @@ export default function Page() {
                 variant="default"
                 href="/signin"
               >
-                Create a Family Wishlist
+                Create Letter from Santa
                 <span>→</span>
               </NavigationButton>
               <p className="text-white italic font-medium text-sm">No credit card required</p>
