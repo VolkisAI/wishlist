@@ -9,7 +9,9 @@ export default function PreviewLetterForm() {
     const [name, setName] = useState('');
 
     return (
-        <div className="relative w-full max-w-2xl mx-auto">
+        <div className="relative w-full max-w-2xl mx-auto pt-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-white mb-4">Demo Santa's Letter</h2>
+            <p className="text-center text-gray-400 mb-10">This is the letter your kids will use to write their wishes to Santa. Make it magical!</p>
             {/* Paper Background with Snow Effect */}
             <div
                 className="relative bg-white rounded-lg shadow-2xl overflow-visible transform -rotate-6"
@@ -85,11 +87,12 @@ export default function PreviewLetterForm() {
                                 />
                             </div>
 
-                            <div className="mt-4 flex justify-end">
+                            {/* Hide the Write to Santa Button */}
+                            {/* <div className="mt-4 flex justify-end">
                                 <NavigationButton href="/signin">
                                     ✨ Write to Santa ✨
                                 </NavigationButton>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

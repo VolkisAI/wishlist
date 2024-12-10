@@ -1,6 +1,5 @@
 import ButtonSignin from "@/components/ButtonSignin";
 import ChristmasButton from "@/components/ChristmasButton";
-import DottedBackground from "@/components/DottedBackground";
 import Image from "next/image";
 import ChristmasCountdown from "@/components/ChristmasCountdown";
 import PreviewLetterForm from "@/components/PreviewLetterForm";
@@ -12,7 +11,7 @@ export default function Page() {
       <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/50">
         <div className="p-4 flex justify-between items-center max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
-            {/* Santa Image */}
+            {/* Santa Image Left */}
             <div className="relative w-10 h-10">
               <Image
                 src="/blog/introducing-supabase/effects/Santa.png"
@@ -46,7 +45,6 @@ export default function Page() {
         {/* Hero Section */}
         <section className="relative px-4 py-20 overflow-hidden">
           <div className="absolute inset-0 bg-[#121212]" />
-          <DottedBackground />
           
           {/* World Map Background */}
           <div 
@@ -56,28 +54,18 @@ export default function Page() {
               backgroundSize: '50%',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center center',
+              opacity: 0.1,
               maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
             }}
           />
-          
-          {/* Snow overlay */}
-          <div 
-            className="absolute top-0 left-0 right-0 h-20"
-            style={{
-              backgroundImage: 'url("/white-snow-cap-clipart-md.png")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'bottom',
-              backgroundRepeat: 'repeat-x',
-            }}
-          />
 
-          {/* Add Santa Image */}
+          {/* Left Side Santa Image */}
           <div className="absolute left-[calc(5%+100px)] top-1/4 hidden lg:block">
             <div className="relative w-72 h-72 animate-float">
               <Image
                 src="/blog/introducing-supabase/effects/Santa.png"
-                alt="Santa"
+                alt="Santa - Left Hand Side"
                 width={288}
                 height={288}
                 className="object-contain transform rotate-[350deg]"
@@ -85,6 +73,20 @@ export default function Page() {
             </div>
           </div>
 
+          {/* Right Side Presents Image */}
+          <div className="absolute right-[calc(5%+100px)] top-1/4 hidden lg:block">
+            <div className="relative w-72 h-72 animate-float">
+              <Image
+                src="/blog/introducing-supabase/effects/presents.png"
+                alt="Presents - Right Hand Side"
+                width={288}
+                height={288}
+                className="object-contain transform rotate-[10deg]"
+              />
+            </div>
+          </div>
+
+          {/* Hero Content */}
           <div className="relative max-w-7xl mx-auto text-center space-y-6 z-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm text-white">
               <span>🎄</span>
@@ -102,6 +104,8 @@ export default function Page() {
               and receive a personal reply from the North Pole! Parents can easily keep 
               track of all their children&apos;s Christmas dreams in one magical place.
             </p>
+
+            <h2 className="text-2xl font-bold text-white mt-8 mb-4">Countdown To Christmas</h2>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <ChristmasCountdown />
@@ -125,7 +129,7 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Features Section with steps */}
+        {/* Features Section */}
         <section className="relative px-4 py-24 bg-[#121212]">
           <div className="max-w-7xl mx-auto space-y-16">
             <div className="text-center space-y-4">
