@@ -160,7 +160,7 @@ export default function WishlistGrid() {
                     <div className="max-w-xl mx-auto text-left space-y-4">
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
-                            <p className="text-gray-400">Click the "Create New Wishlist" button above to create a wishlist group for your family</p>
+                            <p className="text-gray-400">Click the &quot;Create New Wishlist&quot; button above to create a wishlist group for your family</p>
                         </div>
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
