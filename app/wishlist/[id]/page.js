@@ -17,18 +17,24 @@ async function getWishlistData(id) {
         const supabase = createClient();
         
         // Fetch the wishlist from Supabase
-        const { data: wishlist, error } = await supabase
+        const { data, error } = await supabase
             .from('wishlists')
             .select('*')
             .eq('id', id)
-            .single();
+            .maybeSingle();
 
-        if (error || !wishlist) {
+        if (error) {
             console.error('Error fetching wishlist:', error);
             return null;
         }
 
-        return wishlist;
+        // If no wishlist found, return null
+        if (!data) {
+            console.log('No wishlist found with id:', id);
+            return null;
+        }
+
+        return data;
     } catch (error) {
         console.error('Error in getWishlistData:', error);
         return null;
@@ -51,9 +57,9 @@ export default async function WishlistPage({ params }) {
     };
 
     return (
-        <main className="min-h-screen bg-gradient-radial from-[#1b2735] to-[#090a0f] relative overflow-hidden">
-            {/* Enhanced Snow Effect */}
-            <div className="snow-container">
+        <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+            {/* Snow Effect Container */}
+            <div className="snow-container fixed inset-0 pointer-events-none z-10">
                 {[...Array(150)].map((_, i) => (
                     <div 
                         key={i} 
@@ -66,15 +72,15 @@ export default async function WishlistPage({ params }) {
                 ))}
             </div>
 
-            <div className="w-full min-h-screen px-4 relative z-10 grid place-items-center">
+            <div className="w-full min-h-screen px-4 relative z-20 grid place-items-center">
                 {/* Envelope Container */}
-                <div id="envelopeContainer" className="relative w-full max-w-3xl mx-auto">
+                <div id="envelopeContainer" className="relative w-full max-w-2xl mx-auto">
                     {/* Envelope Back */}
                     <div className="bg-white rounded-lg shadow-2xl overflow-visible transform hover:rotate-1 transition-transform duration-300"
                         style={{
                             background: 'repeating-linear-gradient(45deg, #f8f8f8, #f8f8f8 10px, #ffffff 10px, #ffffff 20px)',
                             width: '100%',
-                            maxWidth: '800px',
+                            maxWidth: '600px',
                             margin: '0 auto'
                         }}>
                         {/* Envelope Flap (Open) */}
@@ -100,11 +106,9 @@ export default async function WishlistPage({ params }) {
                         </div>
 
                         {/* Letter Content */}
-                        <div className="relative bg-white mx-2 mb-8 p-8 rounded shadow-lg transform translate-y-8"
+                        <div className="relative bg-white mx-2 mb-8 p-8 rounded shadow-lg transform translate-y-8 w-full"
                             style={{
-                                background: 'linear-gradient(0deg, #ffffff 0%, #f8f8f8 100%)',
-                                width: '100%',
-                                maxWidth: '750px'
+                                background: 'linear-gradient(0deg, #ffffff 0%, #f8f8f8 100%)'
                             }}>
                             <LetterContent 
                                 name={formatChildrenNames(wishlistData.children)}

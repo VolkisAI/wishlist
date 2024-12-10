@@ -18,6 +18,7 @@ function isPublicPath(pathname) {
   ].includes(pathname) || 
   pathname.startsWith('/_next') || 
   pathname.startsWith('/api/auth') ||
+  pathname.startsWith('/wishlist/') ||  // Allow access to wishlist pages
   pathname.match(/\.(ico|png|jpg|jpeg|gif|svg)$/);
 }
 

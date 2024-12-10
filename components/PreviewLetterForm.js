@@ -45,49 +45,51 @@ export default function PreviewLetterForm() {
 
                 {/* Form Content */}
                 <div className="relative bg-white mx-2 mb-6 p-4 rounded shadow-lg transform translate-y-6">
-                    {/* Letter Header */}
-                    <div className="text-right mb-4 text-gray-700 border-b border-gray-200 pb-2">
-                        <h2 className="text-lg font-medium mb-1">North Pole Post</h2>
-                        <p className="text-base font-medium">Santa&apos;s Workshop</p>
-                        <p className="text-base font-medium">North Pole, Arctic Circle</p>
-                    </div>
-
-                    <div className="space-y-4">
-                        {/* Letter Start */}
-                        <p className="text-lg font-medium text-gray-900 mb-2">Dear Santa,</p>
-
-                        {/* Message Area */}
-                        <div className="relative">
-                            <textarea
-                                value={message}
-                                onChange={(e) => setMessage(e.target.value)}
-                                placeholder="Write your Christmas wishes here..."
-                                className="w-full h-32 bg-transparent text-gray-900 text-base font-medium p-3 border-none focus:ring-0 resize-none placeholder-gray-400 leading-7"
-                                style={{
-                                    backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #e5e7eb 27px, #e5e7eb 28px)',
-                                    backgroundAttachment: 'local',
-                                    lineHeight: '28px',
-                                    paddingTop: '7px'
-                                }}
-                            />
+                    <div className="max-w-[80%] mx-auto">
+                        {/* Letter Header */}
+                        <div className="text-right mb-4 text-gray-700 border-b border-gray-200 pb-2">
+                            <h2 className="text-lg font-medium mb-1">North Pole Post</h2>
+                            <p className="text-base font-medium">Santa&apos;s Workshop</p>
+                            <p className="text-base font-medium">North Pole, Arctic Circle</p>
                         </div>
 
-                        {/* Letter Signature */}
-                        <div className="space-y-1 pt-2">
-                            <p className="text-lg font-medium text-gray-900">From,</p>
-                            <input
-                                type="text"
-                                value={name}
-                                onChange={(e) => setName(e.target.value)}
-                                placeholder="Your name here..."
-                                className="w-full bg-transparent text-gray-900 text-base font-medium p-3 border-b-2 border-gray-200 focus:border-gray-300 focus:ring-0 placeholder-gray-400 leading-7"
-                            />
-                        </div>
+                        <div className="space-y-4">
+                            {/* Letter Start */}
+                            <p className="text-lg font-medium text-gray-900 mb-2">Dear Santa,</p>
 
-                        <div className="mt-4 flex justify-end">
-                            <NavigationButton href="/signin">
-                                ✨ Write to Santa ✨
-                            </NavigationButton>
+                            {/* Message Area */}
+                            <div className="relative">
+                                <textarea
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    placeholder="Write your Christmas wishes here..."
+                                    className="w-full h-32 bg-transparent text-gray-900 text-base font-medium p-3 border-none focus:ring-0 resize-none placeholder-gray-400 leading-7"
+                                    style={{
+                                        backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #e5e7eb 27px, #e5e7eb 28px)',
+                                        backgroundAttachment: 'local',
+                                        lineHeight: '28px',
+                                        paddingTop: '7px'
+                                    }}
+                                />
+                            </div>
+
+                            {/* Letter Signature */}
+                            <div className="space-y-1 pt-2">
+                                <p className="text-lg font-medium text-gray-900">From,</p>
+                                <input
+                                    type="text"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder="Your name here..."
+                                    className="w-full bg-transparent text-gray-900 text-base font-medium p-3 border-b-2 border-gray-200 focus:border-gray-300 focus:ring-0 placeholder-gray-400 leading-7"
+                                />
+                            </div>
+
+                            <div className="mt-4 flex justify-end">
+                                <NavigationButton href="/signin">
+                                    ✨ Write to Santa ✨
+                                </NavigationButton>
+                            </div>
                         </div>
                     </div>
                 </div>
