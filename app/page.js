@@ -5,10 +5,12 @@ import ChristmasCountdown from "@/components/ChristmasCountdown";
 import PreviewLetterForm from "@/components/PreviewLetterForm";
 import NavigationButton from "@/components/NavigationButton";
 import Link from "next/link";
+import MobileWarningPopup from '@/components/MobileWarningPopup';
 
 export default function Page() {
   return (
     <>
+      <MobileWarningPopup />
       <header className="fixed top-0 w-full z-50 backdrop-blur-md bg-black/50">
         <div className="p-4 flex justify-between items-center max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
