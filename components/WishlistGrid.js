@@ -156,7 +156,7 @@ export default function WishlistGrid() {
 
             {!wishlists.length ? (
                 <div className="text-center p-8 space-y-6">
-                    <p className="text-gray-400 text-lg">No wishlists yet. Here's how to get started:</p>
+                    <p className="text-gray-400 text-lg">No wishlists yet. Here&apos;s how to get started:</p>
                     <div className="max-w-xl mx-auto text-left space-y-4">
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
@@ -164,11 +164,11 @@ export default function WishlistGrid() {
                         </div>
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
-                            <p className="text-gray-400">Add your family name, children's names, and write a special message from Santa that they'll see in their letter</p>
+                            <p className="text-gray-400">Add your family name, children&apos;s names, and write a special message from Santa that they&apos;ll see in their letter</p>
                         </div>
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
-                            <p className="text-gray-400">Click the eye icon to view Santa's letter, and use the share button to send the magical letter link to your children</p>
+                            <p className="text-gray-400">Click the eye icon to view Santa&apos;s letter, and use the share button to send the magical letter link to your children</p>
                         </div>
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">4</span>
@@ -176,7 +176,7 @@ export default function WishlistGrid() {
                         </div>
                         <div className="flex items-start gap-3">
                             <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">5</span>
-                            <p className="text-gray-400">View all your children's responses and manage their Christmas wishes right here in the dashboard</p>
+                            <p className="text-gray-400">View all your children&apos;s responses and manage their Christmas wishes right here in the dashboard</p>
                         </div>
                     </div>
                 </div>

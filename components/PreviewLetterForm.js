@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import NavigationButton from './NavigationButton';
 
 export default function PreviewLetterForm() {
     // This is just for preview, so we'll use placeholder text

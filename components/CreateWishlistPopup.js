@@ -113,7 +113,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                         {/* Children Names */}
                         <div>
                             <label className="block text-gray-900 font-extrabold mb-1">
-                                Children's Names <span className="text-red-500">*</span>
+                                Children&apos;s Names <span className="text-red-500">*</span>
                             </label>
                             {children.map((child, index) => (
                                 <div key={index} className="flex gap-2 mb-2">
@@ -122,7 +122,7 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                                         value={child}
                                         onChange={(e) => updateChild(index, e.target.value)}
                                         className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
-                                        placeholder="Child's name"
+                                        placeholder="Child&apos;s name"
                                         required={index === 0}
                                     />
                                     {children.length > 1 && (
