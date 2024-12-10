@@ -4,6 +4,7 @@ import Image from "next/image";
 import ChristmasCountdown from "@/components/ChristmasCountdown";
 import PreviewLetterForm from "@/components/PreviewLetterForm";
 import NavigationButton from "@/components/NavigationButton";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -54,7 +55,7 @@ export default function Page() {
               backgroundSize: '50%',
               backgroundRepeat: 'no-repeat',
               backgroundPosition: 'center center',
-              opacity: 0.1,
+              opacity: 0.05,
               maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
             }}
@@ -111,7 +112,7 @@ export default function Page() {
               <ChristmasCountdown />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col gap-4 justify-center items-center">
               <NavigationButton 
                 variant="default"
                 href="/signin"
@@ -119,6 +120,7 @@ export default function Page() {
                 Create a Family Wishlist
                 <span>→</span>
               </NavigationButton>
+              <p className="text-white italic font-medium text-sm">No credit card required</p>
             </div>
 
             <div className="mt-48">
@@ -241,14 +243,14 @@ export default function Page() {
             <p className="text-xl text-gray-400">
               Free for families to create and manage wishlists
             </p>
-            <ChristmasButton 
-              variant="default" 
-              className="mx-auto py-3 px-8 min-w-0 w-auto"
+            <NavigationButton 
+              variant="default"
               href="/signin"
+              className="mx-auto py-3 px-8 min-w-0 w-auto"
             >
               Get Started For Free
               <span>🎄</span>
-            </ChristmasButton>
+            </NavigationButton>
           </div>
         </section>
       </main>
