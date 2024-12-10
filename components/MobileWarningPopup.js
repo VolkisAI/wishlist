@@ -20,7 +20,7 @@ export default function MobileWarningPopup() {
         const checkWidth = () => {
             if (typeof window !== 'undefined') {
                 const hasSeenWarning = localStorage.getItem('hasSeenMobileWarning');
-                if (window.innerWidth < 700 && !hasSeenWarning) {
+                if (window.innerWidth < 500 && !hasSeenWarning) {
                     setIsOpen(true);
                 }
             }
