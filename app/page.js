@@ -181,12 +181,12 @@ export default function Page() {
               </div>
 
               {/* Steps Grid */}
-              <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+              <div className="grid md:grid-cols-3 gap-8 md:gap-16">
                 {[
                   {
                     step: 1,
-                    title: "Create Your Family Wishlist",
-                    description: "Create a family wishlist, personalising a message from Santa to the kids",
+                    title: "Create Letter from Santa",
+                    description: "Create a personalised letter from Santa to send to your kids",
                     icon: "🎄"
                   },
                   {
@@ -198,7 +198,7 @@ export default function Page() {
                   {
                     step: 3,
                     title: "Track Christmas Wishes",
-                    description: "View their Christmas wish lists and manage all their children&apos;s Christmas dreams in one place",
+                    description: "View your children's Christmas wishlists and dreams in one place",
                     icon: "🎁"
                   }
                 ].map((step, i) => (

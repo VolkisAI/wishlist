@@ -1,7 +1,8 @@
 /**
  * MobileWarningPopup Component
  * 
- * A festive popup warning for mobile users that the site is best viewed on desktop
+ * A festive popup warning for mobile users that the site is best viewed on desktop.
+ * Uses localStorage to remember if the user has dismissed the popup.
  */
 
 'use client';
@@ -15,10 +16,13 @@ export default function MobileWarningPopup() {
     
     useEffect(() => {
         setMounted(true);
-        // Check window width only on client side
+        // Check window width and localStorage only on client side
         const checkWidth = () => {
-            if (typeof window !== 'undefined' && window.innerWidth < 500) {
-                setIsOpen(true);
+            if (typeof window !== 'undefined') {
+                const hasSeenWarning = localStorage.getItem('hasSeenMobileWarning');
+                if (window.innerWidth < 700 && !hasSeenWarning) {
+                    setIsOpen(true);
+                }
             }
         };
         
@@ -29,6 +33,11 @@ export default function MobileWarningPopup() {
         
         return () => window.removeEventListener('resize', checkWidth);
     }, []);
+
+    const handleDismiss = () => {
+        localStorage.setItem('hasSeenMobileWarning', 'true');
+        setIsOpen(false);
+    };
 
     // Don't render anything on server side
     if (!mounted) return null;
@@ -76,7 +85,7 @@ export default function MobileWarningPopup() {
 
                         <div className="flex justify-end space-x-3 pt-4 border-t">
                             <ChristmasButton 
-                                onClick={() => setIsOpen(false)}
+                                onClick={handleDismiss}
                                 className="font-extrabold"
                             >
                                 Continue Anyway 🎁
