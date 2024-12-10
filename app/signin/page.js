@@ -65,7 +65,8 @@ export default function Login() {
         className="absolute inset-0 opacity-30 bg-contain bg-no-repeat bg-center"
         style={{
           backgroundImage: `url('/blog/introducing-supabase/effects/dotted-world-white.png')`,
-          backgroundSize: 'contain',
+          backgroundSize: '50%',
+          opacity: 0.05,
           backgroundPosition: 'center',
         }}
       />

@@ -69,11 +69,12 @@ export default function Page() {
           
           {/* World Map Background */}
           <div 
-            className="absolute inset-0 opacity-30 bg-no-repeat bg-center"
+            className="absolute inset-0"
             style={{
               backgroundImage: `url('/blog/introducing-supabase/effects/dotted-world-white.png')`,
               backgroundSize: '50%',
               backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
               opacity: 0.05,
               maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
