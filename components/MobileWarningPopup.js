@@ -7,37 +7,45 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ChristmasButton from './ChristmasButton';
 
 export default function MobileWarningPopup() {
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
     
+    const handleDismiss = useCallback(() => {
+        localStorage.setItem('hasSeenMobileWarning', 'true');
+        setIsOpen(false);
+    }, []);
+
     useEffect(() => {
         setMounted(true);
-        // Check window width and localStorage only on client side
+        
+        // Debounce the resize handler
+        let resizeTimer;
         const checkWidth = () => {
-            if (typeof window !== 'undefined') {
-                const hasSeenWarning = localStorage.getItem('hasSeenMobileWarning');
-                if (window.innerWidth < 500 && !hasSeenWarning) {
-                    setIsOpen(true);
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (typeof window !== 'undefined') {
+                    const hasSeenWarning = localStorage.getItem('hasSeenMobileWarning');
+                    if (window.innerWidth < 500 && !hasSeenWarning) {
+                        setIsOpen(true);
+                    }
                 }
-            }
+            }, 250); // Debounce for 250ms
         };
         
         checkWidth();
         
-        // Add resize listener
-        window.addEventListener('resize', checkWidth);
+        // Use passive event listener for better performance
+        window.addEventListener('resize', checkWidth, { passive: true });
         
-        return () => window.removeEventListener('resize', checkWidth);
+        return () => {
+            window.removeEventListener('resize', checkWidth);
+            clearTimeout(resizeTimer);
+        };
     }, []);
-
-    const handleDismiss = () => {
-        localStorage.setItem('hasSeenMobileWarning', 'true');
-        setIsOpen(false);
-    };
 
     // Don't render anything on server side
     if (!mounted) return null;

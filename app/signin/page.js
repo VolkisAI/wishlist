@@ -62,14 +62,11 @@ export default function Login() {
       
       {/* World Map Background */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-30 bg-contain bg-no-repeat bg-center"
         style={{
-          backgroundImage: 'url("/blog/introducing-supabase/effects/dotted-world-white.png")',
-          backgroundSize: '50%',
-          backgroundRepeat: 'no-repeat',
-          backgroundPosition: 'center center',
-          maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
+          backgroundImage: `url('/blog/introducing-supabase/effects/dotted-world-white.png')`,
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
         }}
       />
 

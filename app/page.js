@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect } from 'react';
 import ButtonSignin from "@/components/ButtonSignin";
 import ChristmasButton from "@/components/ChristmasButton";
 import Image from "next/image";
@@ -8,6 +11,21 @@ import Link from "next/link";
 import MobileWarningPopup from '@/components/MobileWarningPopup';
 
 export default function Page() {
+  useEffect(() => {
+    // Log memory usage every 30 seconds
+    const memoryCheck = setInterval(() => {
+      if (performance && performance.memory) {
+        console.log('Memory Usage:', {
+          usedJSHeapSize: Math.round(performance.memory.usedJSHeapSize / 1048576) + ' MB',
+          totalJSHeapSize: Math.round(performance.memory.totalJSHeapSize / 1048576) + ' MB',
+          jsHeapSizeLimit: Math.round(performance.memory.jsHeapSizeLimit / 1048576) + ' MB'
+        });
+      }
+    }, 30000);
+
+    return () => clearInterval(memoryCheck);
+  }, []);
+
   return (
     <>
       <MobileWarningPopup />
@@ -51,12 +69,11 @@ export default function Page() {
           
           {/* World Map Background */}
           <div 
-            className="absolute inset-0 opacity-30"
+            className="absolute inset-0 opacity-30 bg-no-repeat bg-center"
             style={{
-              backgroundImage: 'url("/blog/introducing-supabase/effects/dotted-world-white.png")',
+              backgroundImage: `url('/blog/introducing-supabase/effects/dotted-world-white.png')`,
               backgroundSize: '50%',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center center',
+              backgroundPosition: 'center',
               opacity: 0.05,
               maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
               WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent), linear-gradient(to bottom, black 80%, transparent)',
