@@ -57,7 +57,21 @@ export default async function WishlistPage({ params }) {
     };
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
+        <main className="min-h-screen bg-[#121212] relative overflow-hidden">
+            {/* Background Image with Fade Effect */}
+            <div 
+                className="absolute inset-0 opacity-50"
+                style={{
+                    backgroundImage: 'url("/blog/introducing-supabase/effects/christmas_villiage.png")',
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    opacity: 0.2,
+                    maskImage: 'linear-gradient(to right, transparent, black 100px, black calc(100% - 100px), transparent), linear-gradient(to bottom, transparent, black 100px, black calc(100% - 100px), transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 100px, black calc(100% - 100px), transparent), linear-gradient(to bottom, transparent, black 100px, black calc(100% - 100px), transparent)',
+                }}
+            />
+
             {/* Snow Effect Container */}
             <div className="snow-container fixed inset-0 pointer-events-none z-10">
                 {[...Array(150)].map((_, i) => (
@@ -74,7 +88,7 @@ export default async function WishlistPage({ params }) {
 
             <div className="w-full min-h-screen px-4 relative z-20 grid place-items-center">
                 {/* Envelope Container */}
-                <div id="envelopeContainer" className="relative w-full max-w-2xl mx-auto">
+                <div id="envelopeContainer" className="relative w-full max-w-3xl mx-auto">
                     {/* Envelope Back */}
                     <div className="bg-white rounded-lg shadow-2xl overflow-visible transform hover:rotate-1 transition-transform duration-300"
                         style={{

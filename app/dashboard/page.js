@@ -12,8 +12,22 @@ export const dynamic = "force-dynamic";
 
 export default async function Dashboard() {
   return (
-    <main className="min-h-screen p-8 pb-24 bg-[#121212]">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <main className="min-h-screen p-8 pb-24 bg-[#121212] relative overflow-hidden">
+      {/* Snow Effect Container */}
+      <div className="snow-container fixed inset-0 pointer-events-none z-10">
+        {[...Array(150)].map((_, i) => (
+          <div 
+            key={i} 
+            className="snow"
+            style={{
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * -20}s`
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="max-w-7xl mx-auto space-y-8 relative z-20">
         {/* Header Section */}
         <div className="flex justify-between items-center">
           <div>

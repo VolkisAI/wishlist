@@ -28,7 +28,7 @@ export default function Page() {
         </div>
       </header>
 
-      <main className="min-h-screen bg-black pt-20">
+      <main className="min-h-screen bg-[#121212] pt-20">
         {/* Snow Effect Container */}
         <div className="snow-container fixed inset-0 pointer-events-none z-10">
           {[...Array(150)].map((_, i) => (
@@ -85,7 +85,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="relative max-w-7xl mx-auto text-center space-y-6">
+          <div className="relative max-w-7xl mx-auto text-center space-y-6 z-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-sm text-white">
               <span>🎄</span>
               <span>Help Santa know exactly what to bring this Christmas</span>
@@ -126,7 +126,7 @@ export default function Page() {
         </section>
 
         {/* Features Section with steps */}
-        <section className="relative px-4 py-24 bg-[#161616]">
+        <section className="relative px-4 py-24 bg-[#121212]">
           <div className="max-w-7xl mx-auto space-y-16">
             <div className="text-center space-y-4">
               <h2 className="text-3xl md:text-4xl font-bold text-white">
@@ -229,7 +229,7 @@ export default function Page() {
         </section>
 
         {/* CTA Section */}
-        <section className="px-4 py-24">
+        <section className="px-4 py-24 bg-[#121212]">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-3xl md:text-4xl font-bold text-white">
               Start Creating Christmas Magic Today
@@ -249,7 +249,7 @@ export default function Page() {
         </section>
       </main>
 
-      <footer className="border-t border-white/5 bg-black">
+      <footer className="border-t border-white/5 bg-[#121212]">
         <div className="max-w-7xl mx-auto px-4 py-12 text-center text-gray-500">
           <p>© 2024 SantaList. Making Christmas magical for families everywhere.</p>
         </div>

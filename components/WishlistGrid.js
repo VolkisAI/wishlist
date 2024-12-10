@@ -155,8 +155,30 @@ export default function WishlistGrid() {
             )}
 
             {!wishlists.length ? (
-                <div className="text-center p-8 text-gray-400">
-                    <p>No wishlists yet. Click the button above to create your first wishlist!</p>
+                <div className="text-center p-8 space-y-6">
+                    <p className="text-gray-400 text-lg">No wishlists yet. Here's how to get started:</p>
+                    <div className="max-w-xl mx-auto text-left space-y-4">
+                        <div className="flex items-start gap-3">
+                            <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">1</span>
+                            <p className="text-gray-400">Click the "Create New Wishlist" button above to create a wishlist group for your family</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">2</span>
+                            <p className="text-gray-400">Add your family name, children's names, and write a special message from Santa that they'll see in their letter</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">3</span>
+                            <p className="text-gray-400">Click the eye icon to view Santa's letter, and use the share button to send the magical letter link to your children</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">4</span>
+                            <p className="text-gray-400">Your children can read their personalized letter from Santa and write their Christmas wishes back to him</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="bg-gray-800 text-white w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0">5</span>
+                            <p className="text-gray-400">View all your children's responses and manage their Christmas wishes right here in the dashboard</p>
+                        </div>
+                    </div>
                 </div>
             ) : (
                 /* Existing Wishlists Grid */

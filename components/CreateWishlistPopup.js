@@ -8,47 +8,58 @@
 'use client';
 
 import { useState } from 'react';
+import { Tooltip } from 'react-tooltip';
 import ChristmasButton from './ChristmasButton';
 
 export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
-    const [formData, setFormData] = useState({
-        familyName: '',
-        children: [{ name: '' }],
-        note: ''
-    });
+    const [familyName, setFamilyName] = useState('');
+    const [children, setChildren] = useState(['']);
+    const [note, setNote] = useState('');
+    const [error, setError] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        setError('');
+
+        // Validation
+        if (!familyName.trim()) {
+            setError('Please enter your family name');
+            return;
+        }
+
+        // Check if at least one child name is provided
+        const validChildren = children.filter(child => child.trim() !== '');
+        if (validChildren.length === 0) {
+            setError('Please add at least one child name');
+            return;
+        }
+
+        if (!note.trim()) {
+            setError('Please write a special message from Santa');
+            return;
+        }
+
+        // Submit the form
         onSubmit({
-            childName: formData.familyName, // Use family name as main title
-            children: formData.children.map(child => child.name).filter(name => name.trim()),
-            note: formData.note
+            family_name: familyName.trim(),
+            children: validChildren,
+            note: note.trim()
         });
-        setFormData({ familyName: '', children: [{ name: '' }], note: '' });
-        onClose();
     };
 
     const addChild = () => {
-        setFormData({
-            ...formData,
-            children: [...formData.children, { name: '' }]
-        });
+        setChildren([...children, '']);
     };
 
     const removeChild = (index) => {
-        setFormData({
-            ...formData,
-            children: formData.children.filter((_, i) => i !== index)
-        });
+        const newChildren = children.filter((_, i) => i !== index);
+        setChildren(newChildren);
     };
 
-    const updateChildName = (index, name) => {
-        const newChildren = [...formData.children];
-        newChildren[index].name = name;
-        setFormData({
-            ...formData,
-            children: newChildren
-        });
+    const updateChild = (index, value) => {
+        const newChildren = [...children];
+        newChildren[index] = value;
+        setChildren(newChildren);
     };
 
     if (!isOpen) return null;
@@ -68,10 +79,10 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                     }}
                 />
 
-                {/* Santa Seal - Moved outside the popup container */}
-                <div className="absolute -right-3 -top-3 w-16 h-16 bg-gray-900 rounded-full flex items-center justify-center transform rotate-12 shadow-lg z-30"
+                {/* Santa Seal */}
+                <div className="absolute -right-3 -top-3 w-16 h-16 bg-red-600 rounded-full flex items-center justify-center transform rotate-12 shadow-lg z-30"
                     style={{
-                        background: 'radial-gradient(circle at 30% 30%, #1f2937, #111827)'
+                        background: 'radial-gradient(circle at 30% 30%, #dc2626, #991b1b)'
                     }}>
                     <div className="text-white text-sm font-extrabold">SANTA</div>
                 </div>
@@ -83,33 +94,38 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                     }}>
                     <form onSubmit={handleSubmit} className="p-6 space-y-4">
                         <h2 className="text-2xl font-extrabold text-gray-900 mb-4">Create New Wishlist</h2>
-                        
-                        {/* Family Name Input */}
-                        <div className="space-y-2">
-                            <label className="block text-gray-900 font-extrabold">Family Name</label>
+
+                        {/* Family Name */}
+                        <div>
+                            <label className="block text-gray-900 font-extrabold mb-1">
+                                Family Name <span className="text-red-500">*</span>
+                            </label>
                             <input
                                 type="text"
-                                value={formData.familyName}
-                                onChange={(e) => setFormData({...formData, familyName: e.target.value})}
+                                value={familyName}
+                                onChange={(e) => setFamilyName(e.target.value)}
                                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
-                                required
                                 placeholder="e.g., The Smith Family"
+                                required
                             />
                         </div>
 
-                        {/* Children Names Section */}
-                        <div className="space-y-4">
-                            <label className="block text-gray-900 font-extrabold">Children&apos;s Names</label>
-                            {formData.children.map((child, index) => (
-                                <div key={index} className="flex items-center gap-2">
+                        {/* Children Names */}
+                        <div>
+                            <label className="block text-gray-900 font-extrabold mb-1">
+                                Children's Names <span className="text-red-500">*</span>
+                            </label>
+                            {children.map((child, index) => (
+                                <div key={index} className="flex gap-2 mb-2">
                                     <input
                                         type="text"
-                                        value={child.name}
-                                        onChange={(e) => updateChildName(index, e.target.value)}
+                                        value={child}
+                                        onChange={(e) => updateChild(index, e.target.value)}
                                         className="flex-1 p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
-                                        placeholder={`Child ${index + 1}&apos;s name`}
+                                        placeholder="Child's name"
+                                        required={index === 0}
                                     />
-                                    {formData.children.length > 1 && (
+                                    {children.length > 1 && (
                                         <button
                                             type="button"
                                             onClick={() => removeChild(index)}
@@ -134,19 +150,45 @@ export default function CreateWishlistPopup({ isOpen, onClose, onSubmit }) {
                             </button>
                         </div>
 
-                        <div className="space-y-2">
-                            <label className="block text-gray-900 font-extrabold">Special Note From Santa</label>
+                        {/* Special Note From Santa */}
+                        <div>
+                            <div className="flex items-center gap-2 mb-1">
+                                <label className="block text-gray-900 font-extrabold">
+                                    Special Note From Santa <span className="text-red-500">*</span>
+                                </label>
+                                <div 
+                                    className="cursor-help text-gray-400 hover:text-gray-600"
+                                    data-tooltip-id="santa-note-tooltip"
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                </div>
+                                <Tooltip 
+                                    id="santa-note-tooltip"
+                                    place="top"
+                                    className="max-w-xs bg-gray-900 text-white p-2 rounded text-sm"
+                                >
+                                    This message will appear in the magical letter from Santa that your children will read. Make it personal and special!
+                                </Tooltip>
+                            </div>
                             <textarea
-                                value={formData.note}
-                                onChange={(e) => setFormData({...formData, note: e.target.value})}
+                                value={note}
+                                onChange={(e) => setNote(e.target.value)}
                                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-500 focus:border-transparent font-extrabold"
-                                rows="3"
+                                rows="4"
+                                placeholder="Write a magical message from Santa..."
+                                required
                             />
                         </div>
 
+                        {error && (
+                            <div className="text-red-500 text-sm font-medium">{error}</div>
+                        )}
+
                         <div className="flex justify-end space-x-3 pt-4 border-t">
                             <ChristmasButton 
-                                onClick={onClose} 
+                                onClick={onClose}
                                 className="bg-gradient-to-b from-[#121225] to-[#1c1c35] text-white font-extrabold"
                             >
                                 Cancel

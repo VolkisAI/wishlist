@@ -34,7 +34,7 @@ export async function POST(req) {
             .from('wishlists')
             .insert({
                 id: wishlistId,
-                family_name: data.childName,
+                family_name: data.family_name,
                 children: data.children || [],
                 note: data.note,
                 created_at: new Date().toISOString(),
