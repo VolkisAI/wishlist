@@ -2,98 +2,91 @@ import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
-// CHATGPT PROMPT TO GENERATE YOUR TERMS & SERVICES — replace with your own data 👇
+/**
+ * Terms of Service page
+ * 
+ * This is a page where you explain the terms and conditions for using your service.
+ * It's important to be clear and comprehensive about what users can and cannot do.
+ * 
+ * REQUIRED: update the content of this page to match your business needs:
+ * - Website: https://santaswishlist.app
+ * - Name: SantasWishlist
+ * - Description: A magical platform for creating and managing Christmas wishlists
+ * - Features: 
+ *   - User accounts
+ *   - Wishlist creation and management
+ *   - Email notifications
+ *   - Google authentication
+ * - Contact information: sebastian@volkis.co.uk
+ */
 
-// 1. Go to https://chat.openai.com/
-// 2. Copy paste bellow
-// 3. Replace the data with your own (if needed)
-// 4. Paste the answer from ChatGPT directly in the <pre> tag below
-
-// You are an excellent lawyer.
-
-// I need your help to write a simple Terms & Services for my website. Here is some context:
-// - Website: https://shipfa.st
-// - Name: ShipFast
-// - Contact information: marc@shipfa.st
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
-// - Ownership: when buying a package, users can download code to create apps. They own the code but they do not have the right to resell it. They can ask for a full refund within 7 day after the purchase.
-// - User data collected: name, email and payment information
-// - Non-personal data collection: web cookies
-// - Link to privacy-policy: https://shipfa.st/privacy-policy
-// - Governing Law: France
-// - Updates to the Terms: users will be updated by email
-
-// Please write a simple Terms & Services for my site. Add the current date. Do not add or explain your reasoning. Answer:
-
-export const metadata = getSEOTags({
-  title: `Terms and Conditions | ${config.appName}`,
-  canonicalUrlRelative: "/tos",
-});
-
-const TOS = () => {
+export default function TermsOfService() {
   return (
-    <main className="max-w-xl mx-auto">
-      <div className="p-5">
-        <Link href="/" className="btn btn-ghost">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M15 10a.75.75 0 01-.75.75H7.612l2.158 1.96a.75.75 0 11-1.04 1.08l-3.5-3.25a.75.75 0 010-1.08l3.5-3.25a.75.75 0 111.04 1.08L7.612 9.25h6.638A.75.75 0 0115 10z"
-              clipRule="evenodd"
-            />
-          </svg>
-          Back
-        </Link>
-        <h1 className="text-3xl font-extrabold pb-6">
-          Terms and Conditions for {config.appName}
-        </h1>
+    <main className="max-w-xl mx-auto px-4 py-8">
+      <div className="prose dark:prose-invert">
+        <h1>Terms of Service</h1>
+        <p>Last updated: {new Date().toLocaleDateString()}</p>
 
-        <pre
-          className="leading-relaxed whitespace-pre-wrap"
-          style={{ fontFamily: "sans-serif" }}
-        >
-          {`Last Updated: September 26, 2023
+        <div className="space-y-6">
+          {`Welcome to SantasWishlist!
 
-Welcome to ShipFast!
+These Terms of Service ("Terms") govern your use of the SantasWishlist website at https://santaswishlist.app ("Website") and the services provided by SantasWishlist. By using our Website and services, you agree to these Terms.
 
-These Terms of Service ("Terms") govern your use of the ShipFast website at https://shipfa.st ("Website") and the services provided by ShipFast. By using our Website and services, you agree to these Terms.
+1. Description of Service
 
-1. Description of ShipFast
+SantasWishlist is a platform that allows families to create and manage Christmas wishlists, receive personalized letters from Santa, and share the magic of Christmas with their loved ones.
 
-ShipFast is a platform that offers a JavaScript code boilerplate to assist entrepreneurs in launching their startups more efficiently.
+2. User Accounts
 
-2. Ownership and Usage Rights
+2.1. You must be at least 18 years old to create an account.
+2.2. Parents/guardians can create and manage wishlists on behalf of their children.
+2.3. You are responsible for maintaining the security of your account.
+2.4. You must provide accurate and complete information when creating an account.
 
-When you purchase a package from ShipFast, you gain the right to download and use the code provided for creating applications. You own the code you create but do not have the right to resell it. We offer a full refund within 7 days of purchase, as specified in our refund policy.
+3. Use of Service
 
-3. User Data and Privacy
+3.1. You agree to use the service for its intended purpose.
+3.2. You will not use the service for any illegal or unauthorized purpose.
+3.3. You will not attempt to harm or disrupt the service.
 
-We collect and store user data, including name, email, and payment information, as necessary to provide our services. For details on how we handle your data, please refer to our Privacy Policy at https://shipfa.st/privacy-policy.
+4. Content Guidelines
 
-4. Non-Personal Data Collection
+4.1. All content must be appropriate for children.
+4.2. No inappropriate, offensive, or harmful content is allowed.
+4.3. We reserve the right to remove any content that violates these guidelines.
 
-We use web cookies to collect non-personal data for the purpose of improving our services and user experience.
+5. Privacy
 
-5. Governing Law
+5.1. We respect your privacy and handle your data according to our Privacy Policy.
+5.2. You can view our complete Privacy Policy at https://santaswishlist.app/privacy-policy.
 
-These Terms are governed by the laws of France.
+6. Intellectual Property
 
-6. Updates to the Terms
+6.1. The service and its content are protected by copyright and other laws.
+6.2. You retain ownership of your content but grant us license to use it for providing the service.
 
-We may update these Terms from time to time. Users will be notified of any changes via email.
+7. Termination
 
-For any questions or concerns regarding these Terms of Service, please contact us at marc@shipfa.st.
+7.1. We may terminate or suspend your account for violations of these Terms.
+7.2. You may delete your account at any time.
 
-Thank you for using ShipFast!`}
-        </pre>
+8. Changes to Terms
+
+8.1. We may update these Terms from time to time.
+8.2. We will notify you of significant changes via email.
+
+9. Disclaimer
+
+9.1. The service is provided "as is" without warranties.
+9.2. We are not responsible for user-generated content.
+
+10. Contact
+
+For any questions or concerns regarding these Terms of Service, please contact us at sebastian@volkis.co.uk.
+
+Thank you for using SantasWishlist!`}
+        </div>
       </div>
     </main>
   );
-};
-
-export default TOS;
+}

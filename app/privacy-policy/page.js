@@ -2,110 +2,107 @@ import Link from "next/link";
 import { getSEOTags } from "@/libs/seo";
 import config from "@/config";
 
-// CHATGPT PROMPT TO GENERATE YOUR PRIVACY POLICY — replace with your own data 👇
-
-// 1. Go to https://chat.openai.com/
-// 2. Copy paste bellow
-// 3. Replace the data with your own (if needed)
-// 4. Paste the answer from ChatGPT directly in the <pre> tag below
-
-// You are an excellent lawyer.
-
-// I need your help to write a simple privacy policy for my website. Here is some context:
-// - Website: https://shipfa.st
-// - Name: ShipFast
-// - Description: A JavaScript code boilerplate to help entrepreneurs launch their startups faster
-// - User data collected: name, email and payment information
-// - Non-personal data collection: web cookies
-// - Purpose of Data Collection: Order processing
-// - Data sharing: we do not share the data with any other parties
-// - Children's Privacy: we do not collect any data from children
-// - Updates to the Privacy Policy: users will be updated by email
-// - Contact information: marc@shipfa.st
-
-// Please write a simple privacy policy for my site. Add the current date.  Do not add or explain your reasoning. Answer:
+/**
+ * Privacy Policy page
+ * 
+ * This is a page where you explain how you handle user data.
+ * It's important to be transparent about data collection and usage.
+ * 
+ * REQUIRED: update the content of this page to match your business needs:
+ * - Website: https://santaswishlist.app
+ * - Name: SantasWishlist
+ * - Description: A magical platform for creating and managing Christmas wishlists
+ * - Features: 
+ *   - User accounts
+ *   - Wishlist creation and management
+ *   - Email notifications
+ *   - Google authentication
+ * - Contact information: sebastian@volkis.co.uk
+ */
 
 export const metadata = getSEOTags({
   title: `Privacy Policy | ${config.appName}`,
   canonicalUrlRelative: "/privacy-policy",
 });
 
-const PrivacyPolicy = () => {
+export default function PrivacyPolicy() {
   return (
-    <main className="max-w-xl mx-auto">
-      <div className="p-5">
-        <Link href="/" className="btn btn-ghost">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            className="w-5 h-5"
-          >
-            <path
-              fillRule="evenodd"
-              d="M15 10a.75.75 0 01-.75.75H7.612l2.158 1.96a.75.75 0 11-1.04 1.08l-3.5-3.25a.75.75 0 010-1.08l3.5-3.25a.75.75 0 111.04 1.08L7.612 9.25h6.638A.75.75 0 0115 10z"
-              clipRule="evenodd"
-            />
-          </svg>{" "}
-          Back
-        </Link>
-        <h1 className="text-3xl font-extrabold pb-6">
-          Privacy Policy for {config.appName}
-        </h1>
+    <main className="max-w-xl mx-auto px-4 py-8">
+      <div className="prose dark:prose-invert">
+        <h1>Privacy Policy</h1>
+        <p>Last updated: {new Date().toLocaleDateString()}</p>
 
-        <pre
-          className="leading-relaxed whitespace-pre-wrap"
-          style={{ fontFamily: "sans-serif" }}
-        >
-          {`Last Updated: 2023-08-25
-
-Thank you for visiting ShipFast ("we," "us," or "our"). This Privacy Policy outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://shipfa.st (the "Website").
-
-By accessing or using the Website, you agree to the terms of this Privacy Policy. If you do not agree with the practices described in this policy, please do not use the Website.
+        <div className="space-y-6">
+          {`Thank you for visiting SantasWishlist ("we," "us," or "our"). This Privacy Policy outlines how we collect, use, and protect your personal and non-personal information when you use our website located at https://santaswishlist.app (the "Website").
 
 1. Information We Collect
 
-1.1 Personal Data
+We collect the following types of information:
 
-We collect the following personal information from you:
+a) Personal Information:
+- Email address (when you sign up)
+- Authentication data (when you log in with Google)
+- Wishlist data (when you create wishlists)
+- Communication preferences
 
-Name: We collect your name to personalize your experience and communicate with you effectively.
-Email: We collect your email address to send you important information regarding your orders, updates, and communication.
-Payment Information: We collect payment details to process your orders securely. However, we do not store your payment information on our servers. Payments are processed by trusted third-party payment processors.
+b) Non-Personal Information:
+- Browser type
+- Device information
+- Usage data
+- IP address
 
-1.2 Non-Personal Data
+2. How We Use Your Information
 
-We may use web cookies and similar technologies to collect non-personal information such as your IP address, browser type, device information, and browsing patterns. This information helps us to enhance your browsing experience, analyze trends, and improve our services.
+We use your information to:
+- Provide and maintain our services
+- Send you important updates
+- Improve our website
+- Respond to your requests
+- Send Christmas-related communications
 
-2. Purpose of Data Collection
+3. Data Storage and Security
 
-We collect and use your personal data for the sole purpose of order processing. This includes processing your orders, sending order confirmations, providing customer support, and keeping you updated about the status of your orders.
+We use industry-standard security measures to protect your data. Your information is stored securely on our servers and we use encryption to protect sensitive data.
 
-3. Data Sharing
+4. Third-Party Services
 
-We do not share your personal data with any third parties except as required for order processing (e.g., sharing your information with payment processors). We do not sell, trade, or rent your personal information to others.
+We use trusted third-party services:
+- Google (for authentication)
+- Supabase (for database)
+- Vercel (for hosting)
+- Resend (for emails)
 
-4. Children's Privacy
+5. Children's Privacy
 
-ShipFast is not intended for children under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us at the email address provided below.
+SantasWishlist is not intended for children under the age of 13 without parental consent. Parents can create and manage wishlists on behalf of their children.
 
-5. Updates to the Privacy Policy
+6. Data Retention
 
-We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. Any updates will be posted on this page, and we may notify you via email about significant changes.
+We retain your data as long as your account is active or as needed to provide you services. You can request data deletion at any time.
 
-6. Contact Information
+7. Your Rights
 
-If you have any questions, concerns, or requests related to this Privacy Policy, you can contact us at:
+You have the right to:
+- Access your data
+- Correct your data
+- Delete your data
+- Export your data
+- Opt out of communications
 
-Email: marc@shipfa.st
+8. Changes to Privacy Policy
 
-For all other inquiries, please visit our Contact Us page on the Website.
+We may update this policy occasionally. We will notify you of significant changes via email.
 
-By using ShipFast, you consent to the terms of this Privacy Policy.`}
-        </pre>
+9. Contact Us
+
+For privacy concerns:
+Email: sebastian@volkis.co.uk
+
+10. Consent
+
+By using SantasWishlist, you consent to the terms of this Privacy Policy.`}
+        </div>
       </div>
     </main>
   );
-};
-
-export default PrivacyPolicy;
+}

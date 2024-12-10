@@ -22,7 +22,7 @@ export default function Page() {
                 className="object-contain"
               />
             </div>
-            <div className="text-2xl font-bold text-white">SantaList</div>
+            <div className="text-2xl font-bold text-white">SantasWishlist</div>
           </div>
           <ButtonSignin text="Login" href="/signin" />
         </div>
